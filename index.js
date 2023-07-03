@@ -72,27 +72,39 @@ function hoursWorkedOnDate(employeeRecord, date){
 
 
 
-function wagesEarnedOnDate(employeeRecord, date1, date2) {
-    let hoursWorked1 = hoursWorkedOnDate(employeeRecord, date1);
-    let hoursWorked2 = hoursWorkedOnDate(employeeRecord, date2);
+function wagesEarnedOnDate(employeeRecord, date) {
 
-    const wage1 = hoursWorked1 * employeeRecord.payPerHour;
-    let wage2 = hoursWorked2 * employeeRecord.payPerHour;
+    let hoursWorked =  hoursWorkedOnDate(employeeRecord, date);
+    let  totalHoursPay = hoursWorked * employeeRecord.payPerHour;
 
-    const allWagesFor = wage1 + wage2;
-
-    return allWagesFor
-}
-
-
-
-function allWagesFor(employeeRecord, date1, date2){
-
-   let allWages = wagesEarnedOnDate(employeeRecord, date1, date2);
-
-    return allWages
+        return totalHoursPay
 
 }
+
+
+
+
+
+function allWagesFor(employeeRecord) {
+    let totalWages = 0;
+  
+    for (let i = 0; i < employeeRecord.timeInEvents.length; i++) {
+      const timeInEvent = employeeRecord.timeInEvents[i];
+      const date = timeInEvent.date;
+      const wages = wagesEarnedOnDate(employeeRecord, date);
+      totalWages += wages;
+    }
+  
+    return totalWages;
+  }
+
+
+
+
+
+
+
+
 
 
 
