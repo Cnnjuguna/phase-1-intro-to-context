@@ -83,8 +83,6 @@ function wagesEarnedOnDate(employeeRecord, date) {
 
 
 
-
-
 function allWagesFor(employeeRecord) {
     let totalWages = 0;
   
@@ -97,6 +95,20 @@ function allWagesFor(employeeRecord) {
   
     return totalWages;
   }
+
+
+  function calculatePayroll(employeeRecords) {
+    let totalPayroll = 0;
+  
+    for (let i = 0; i < employeeRecords.length; i++) {
+      const employeeRecord = employeeRecords[i];
+      const wages = allWagesFor(employeeRecord);
+      totalPayroll += wages;
+    }
+  
+    return totalPayroll;
+  }
+  
 
 
 
